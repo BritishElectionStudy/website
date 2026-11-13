@@ -15,7 +15,7 @@
 .rail-item h2{margin-top:10px}
 
 .footer{flex-direction:column;align-items:center;text-align:center;gap:24px}
-.partner-logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;justify-items:center;gap:clamp(24px,4vw,64px);width:min(100%,800px)}
-.footer .partner-logos img{display:block;width:100%;height:auto;max-width:160px;max-height:72px;object-fit:contain}
+.partner-logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;justify-items:center;gap:0;width:min(100%,680px)}
+.footer .partner-logos img{display:block;width:auto;height:auto;max-width:min(100%,128px);max-height:56px;object-fit:contain}
 .footer > p{margin:0;color:#586474}
-@media(max-width:560px){.partner-logos{grid-template-columns:repeat(2,minmax(0,1fr));width:min(100%,360px);gap:28px 40px}}
+@media(max-width:560px){.partner-logos{grid-template-columns:repeat(2,minmax(0,1fr));width:min(100%,340px);row-gap:24px}}
