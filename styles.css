@@ -9,7 +9,13 @@
 
 /* The supplied logo has a transparent left margin of 70 / 2400 pixels. */
 .masthead > a{margin-left:max(-9.041667px,-1.166667vw)}
-.rail-deck{font-family:SourceSerif,serif;font-size:clamp(15px,1.2vw,17px);line-height:1.4;margin:10px 0 0}
+.rail-deck{font-family:SourceSerif,serif;font-size:clamp(15px,1.2vw,17px);line-height:1.4;margin:5px 0 0}
 @media(max-width:560px){.masthead > a{margin-left:max(-5.833333px,-1.516667vw)}}
 
 .rail-item h2{margin-top:10px}
+
+.footer{flex-direction:column;align-items:center;text-align:center;gap:24px}
+.partner-logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:center;justify-items:center;gap:clamp(24px,4vw,64px);width:min(100%,800px)}
+.footer .partner-logos img{display:block;width:100%;height:auto;max-width:160px;max-height:72px;object-fit:contain}
+.footer > p{margin:0;color:#586474}
+@media(max-width:560px){.partner-logos{grid-template-columns:repeat(2,minmax(0,1fr));width:min(100%,360px);gap:28px 40px}}
