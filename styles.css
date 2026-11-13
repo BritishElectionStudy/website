@@ -44,3 +44,9 @@
 .footer::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:#1d3763}
 .footer .social-links a{color:#fff}
 .footer a:focus-visible{outline-color:#fff}
+
+/* Keep equal edge-to-edge gaps despite the logos' different aspect ratios. */
+.footer .partner-logos{display:flex;justify-content:flex-end;align-items:center;gap:16px}
+.footer .partner-logos img{flex:0 0 auto}
+@media(max-width:760px){.footer .partner-logos{width:auto;max-width:100%;justify-content:center;flex-wrap:wrap}}
+@media(max-width:560px){.footer .partner-logos{width:min(100%,240px);gap:24px 16px}}
