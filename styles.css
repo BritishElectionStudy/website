@@ -52,7 +52,7 @@
 @media(max-width:560px){.footer .partner-logos{width:min(100%,240px);gap:24px 16px}}
 
 /* Compact navy footer with white social icons. */
-.footer{padding-block:24px}
+.footer{padding-block:12px}
 .footer .social-icon{background-color:#fff}
 body{min-height:100vh;display:flex;flex-direction:column}
 .site-header,main,.footer{width:100%}
