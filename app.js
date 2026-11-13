@@ -1,9 +1,9 @@
 const stories = [
   {id:'voter-change', type:'Blog post', date:'12 November 2026', title:'Why voters change their minds', deck:'A closer look at how and why people move between parties.', image:'hero.png', alt:'A woman walking in a British town centre'},
-  {id:'attitudes', type:'Report', date:'10 November 2026', title:'Political attitudes in Britain', image:'report.png', alt:'People approaching a polling station'},
-  {id:'age-education', type:'Working paper', date:'6 November 2026', title:'Age, education and the vote', image:'paper.png', alt:'Students walking together on a university campus'},
-  {id:'participation', type:'Blog post', date:'2 November 2026', title:'Understanding political participation', image:'report.png', alt:'The entrance to a polling station'},
-  {id:'generations', type:'Report', date:'29 October 2026', title:'Political views across generations', image:'paper.png', alt:'Students talking outside a university'}
+  {id:'attitudes', type:'Report', date:'10 November 2026', title:'Political attitudes in Britain', deck:'A look at political attitudes across Britain.', image:'report.png', alt:'People approaching a polling station'},
+  {id:'age-education', type:'Working paper', date:'6 November 2026', title:'Age, education and the vote', deck:'Exploring how age and education relate to voting.', image:'paper.png', alt:'Students walking together on a university campus'},
+  {id:'participation', type:'Blog post', date:'2 November 2026', title:'Understanding political participation', deck:'How people take part in politics and elections.', image:'report.png', alt:'The entrance to a polling station'},
+  {id:'generations', type:'Report', date:'29 October 2026', title:'Political views across generations', deck:'Exploring political views across different generations.', image:'paper.png', alt:'Students talking outside a university'}
 ];
 const main=document.querySelector('main');
 const filename=location.pathname.split('/').pop() || 'index.html';
@@ -11,7 +11,7 @@ const pageTitles={'about.html':'About','analysis.html':'Analysis','data.html':'D
 if(pageTitles[filename]) document.title=`${pageTitles[filename]} | British Election Study`;
 const link=s=>`article.html?id=${encodeURIComponent(s.id)}`;
 const metadata=s=>`<div class="small-meta"><span class="type">${s.type}</span><span aria-hidden="true">·</span><time>${s.date}</time></div>`;
-const railStory=s=>`<article class="rail-item"><a href="${link(s)}" tabindex="-1" aria-hidden="true"><img src="assets/${s.image}" alt=""></a><div>${metadata(s)}<h2><a href="${link(s)}">${s.title}</a></h2></div></article>`;
+const railStory=s=>`<article class="rail-item"><a href="${link(s)}" tabindex="-1" aria-hidden="true"><img src="assets/${s.image}" alt=""></a><div>${metadata(s)}<h2><a href="${link(s)}">${s.title}</a></h2><p class="rail-deck">${s.deck}</p></div></article>`;
 const card=s=>`<article class="article-card"><a href="${link(s)}" tabindex="-1" aria-hidden="true"><img src="assets/${s.image}" alt=""></a>${metadata(s)}<h2><a href="${link(s)}">${s.title}</a></h2></article>`;
 const arrow=(direction)=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${direction==='left'?'M15 3 6 12l9 9':'M9 3l9 9-9 9'}"/></svg>`;
 if(filename==='index.html'){

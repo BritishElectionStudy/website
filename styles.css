@@ -6,3 +6,8 @@
 @media (min-width:901px) and (max-width:1500px){.rail-controls button:first-child{left:-24px}.rail-controls button:nth-child(2){right:-24px}}
 
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* The supplied logo has a transparent left margin of 70 / 2400 pixels. */
+.masthead > a{margin-left:max(-9.041667px,-1.166667vw)}
+.rail-deck{font-family:SourceSerif,serif;font-size:clamp(15px,1.2vw,17px);line-height:1.4;margin:10px 0 0}
+@media(max-width:560px){.masthead > a{margin-left:max(-5.833333px,-1.516667vw)}}
