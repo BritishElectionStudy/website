@@ -16,3 +16,8 @@ Artwork rights remain with the respective institutions. This kit uses official-s
 artwork for the user's stated BES attribution requirement. The raster files are
 adequate for these prototype footer sizes; obtain print masters from the brand
 teams for final commercial production. The guide does not replace their brand rules.
+
+## Dark-background variants for the prototype
+
+- `university-of-manchester-dark.png` is the unmodified `TAB_col_background.png` from the official MSA identity pack linked above, under `Partner Universities/University of Manchester/Tab_logo/Coloured backgrounds/`.
+- `esrc-dark.svg` is a vector conversion of the UKRI/ESRC logo form embedded in the first page of [ADR UK Ambassadors – impact story slides, October 2026](https://www.adruk.org/fileadmin/uploads/adruk/Documents/Ambassadors/ADR_UK_Ambassadors_-_impact_story_slides.pdf). It preserves the original vector shapes and colours. It is an extracted example, rather than a separately supplied UKRI master; obtain the current dark-background master from the UKRI brand hub before production.
