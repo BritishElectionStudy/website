@@ -11,3 +11,5 @@
 .masthead > a{margin-left:max(-9.041667px,-1.166667vw)}
 .rail-deck{font-family:SourceSerif,serif;font-size:clamp(15px,1.2vw,17px);line-height:1.4;margin:10px 0 0}
 @media(max-width:560px){.masthead > a{margin-left:max(-5.833333px,-1.516667vw)}}
+
+.rail-item h2{margin-top:10px}
