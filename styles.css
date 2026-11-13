@@ -50,3 +50,10 @@
 .footer .partner-logos img{flex:0 0 auto}
 @media(max-width:760px){.footer .partner-logos{width:auto;max-width:100%;justify-content:center;flex-wrap:wrap}}
 @media(max-width:560px){.footer .partner-logos{width:min(100%,240px);gap:24px 16px}}
+
+/* Compact navy footer with white social icons. */
+.footer{padding-block:24px}
+.footer .social-icon{background-color:#fff}
+body{min-height:100vh;display:flex;flex-direction:column}
+.site-header,main,.footer{width:100%}
+main{flex:1 0 auto}
