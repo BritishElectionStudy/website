@@ -15,6 +15,7 @@ const railStory=s=>`<article class="rail-item"><a href="${link(s)}" tabindex="-1
 const card=s=>`<article class="article-card"><a href="${link(s)}" tabindex="-1" aria-hidden="true"><img src="assets/${s.image}" alt=""></a>${metadata(s)}<h2><a href="${link(s)}">${s.title}</a></h2></article>`;
 const arrow=(direction)=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${direction==='left'?'M15 3 6 12l9 9':'M9 3l9 9-9 9'}"/></svg>`;
 if(filename==='index.html'){
+  document.body.classList.add('home');
   const lead=stories[0];
   main.innerHTML=`<section class="hero" aria-label="Featured analysis"><a class="hero-photo" href="${link(lead)}" tabindex="-1" aria-hidden="true"><img class="hero-image" src="assets/${lead.image}" alt=""></a><div class="hero-copy"><div><div class="meta"><span class="type">BLOG POST</span><time>${lead.date}</time></div><h1><a href="${link(lead)}">${lead.title}</a></h1><p class="deck">${lead.deck}</p><p class="byline">BES team</p></div></div></section><section class="story-rail" aria-label="More analysis"><div class="rail-body"><div class="rail-viewport"><div class="stories"></div></div><div class="rail-controls"><button type="button" id="prev" aria-label="Previous stories">${arrow('left')}</button><button type="button" id="next" aria-label="Next stories">${arrow('right')}</button></div></div><p class="sr-only" id="carousel-status" aria-live="polite"></p><div class="dots" aria-label="Story pages"></div></section>`;
   let page=0;
