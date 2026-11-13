@@ -16,12 +16,26 @@ const card=s=>`<article class="article-card"><a href="${link(s)}" tabindex="-1" 
 const arrow=(direction)=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${direction==='left'?'M15 3 6 12l9 9':'M9 3l9 9-9 9'}"/></svg>`;
 if(filename==='index.html'){
   const lead=stories[0];
-  main.innerHTML=`<section class="hero" aria-label="Featured analysis"><a class="hero-photo" href="${link(lead)}" tabindex="-1" aria-hidden="true"><img class="hero-image" src="assets/${lead.image}" alt=""></a><div class="hero-copy"><div><div class="meta"><span class="type">BLOG POST</span><time>${lead.date}</time></div><h1><a href="${link(lead)}">${lead.title}</a></h1><p class="deck">${lead.deck}</p><p class="byline">BES team</p></div></div></section><section class="story-rail" aria-label="More analysis"><div class="stories" aria-live="polite"></div><div class="rail-controls"><button type="button" id="prev" aria-label="Previous stories">${arrow('left')}</button><button type="button" id="next" aria-label="Next stories">${arrow('right')}</button></div><div class="dots" aria-label="Story pages"></div></section>`;
-  let page=0; const lower=stories.slice(1); const pages=Math.ceil(lower.length/2);
-  function draw(){document.querySelector('.stories').innerHTML=lower.slice(page*2,page*2+2).map(railStory).join('');document.querySelector('#prev').disabled=page===0;document.querySelector('#next').disabled=page===pages-1;document.querySelector('.dots').innerHTML=Array.from({length:pages},(_,i)=>`<button type="button" aria-label="Show story page ${i+1}" aria-current="${i===page}" data-page="${i}"></button>`).join('');}
-  document.querySelector('#prev').addEventListener('click',()=>{if(page>0){page--;draw()}});
-  document.querySelector('#next').addEventListener('click',()=>{if(page<pages-1){page++;draw()}});
-  document.querySelector('.dots').addEventListener('click',event=>{if(event.target.dataset.page!==undefined){page=Number(event.target.dataset.page);draw()}});draw();
+  main.innerHTML=`<section class="hero" aria-label="Featured analysis"><a class="hero-photo" href="${link(lead)}" tabindex="-1" aria-hidden="true"><img class="hero-image" src="assets/${lead.image}" alt=""></a><div class="hero-copy"><div><div class="meta"><span class="type">BLOG POST</span><time>${lead.date}</time></div><h1><a href="${link(lead)}">${lead.title}</a></h1><p class="deck">${lead.deck}</p><p class="byline">BES team</p></div></div></section><section class="story-rail" aria-label="More analysis"><div class="rail-viewport"><div class="stories"></div></div><p class="sr-only" id="carousel-status" aria-live="polite"></p><div class="rail-controls"><button type="button" id="prev" aria-label="Previous stories">${arrow('left')}</button><button type="button" id="next" aria-label="Next stories">${arrow('right')}</button></div><div class="dots" aria-label="Story pages"></div></section>`;
+  let page=0;
+  const lower=stories.slice(1), pages=Math.ceil(lower.length/2);
+  const track=document.querySelector('.stories');
+  const dots=document.querySelector('.dots');
+  track.innerHTML=Array.from({length:pages},(_,i)=>`<div class="rail-page">${lower.slice(i*2,i*2+2).map(railStory).join('')}</div>`).join('');
+  dots.innerHTML=Array.from({length:pages},(_,i)=>`<button type="button" aria-label="Show story page ${i+1}" data-page="${i}"></button>`).join('');
+  function showPage(next, announce=false){
+    page=next;
+    track.style.transform=`translateX(-${page*100}%)`;
+    track.querySelectorAll('.rail-page').forEach((slide,i)=>{slide.inert=i!==page;slide.setAttribute('aria-hidden',String(i!==page))});
+    dots.querySelectorAll('button').forEach((button,i)=>button.setAttribute('aria-current',String(i===page)));
+    document.querySelector('#prev').disabled=page===0;
+    document.querySelector('#next').disabled=page===pages-1;
+    if(announce) document.querySelector('#carousel-status').textContent=`Showing stories ${page*2+1} to ${Math.min(page*2+2,lower.length)} of ${lower.length}`;
+  }
+  document.querySelector('#prev').addEventListener('click',()=>{if(page>0)showPage(page-1,true)});
+  document.querySelector('#next').addEventListener('click',()=>{if(page<pages-1)showPage(page+1,true)});
+  dots.addEventListener('click',event=>{if(event.target.dataset.page!==undefined)showPage(Number(event.target.dataset.page),true)});
+  showPage(0);
 } else if(filename==='analysis.html'){
   main.innerHTML=`<div class="page"><h1>Analysis</h1><p class="intro">Explore analysis from the British Election Study.</p><form class="form-row" id="search" role="search"><label class="skip" for="query">Search analysis</label><input id="query" name="q" type="search" placeholder="Search analysis"><button>Search</button></form><p class="notice">The stories in this prototype are illustrative examples.</p><p class="status" aria-live="polite"></p><div class="article-grid"></div></div>`;
   const query=document.querySelector('#query'), grid=document.querySelector('.article-grid'), status=document.querySelector('.status');
